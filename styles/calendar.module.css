@@ -1,0 +1,73 @@
+.calendar {
+  width: 100%;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-family: inherit;
+}
+
+.calendarTile {
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  position: relative;
+}
+
+.workingDay {
+  background: linear-gradient(to bottom right, #3b82f6, #60a5fa) !important;
+  color: white !important;
+  font-weight: 500 !important;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.1);
+  transform: scale(1);
+  transition: all 0.2s ease;
+}
+
+.workingDay:hover {
+  background: linear-gradient(to bottom right, #2563eb, #3b82f6) !important;
+  transform: scale(1.05);
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+}
+
+.today {
+  border: 2px solid #3b82f6 !important;
+  font-weight: 600 !important;
+}
+
+.selected {
+  background: #3b82f6 !important;
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed !important;
+  background: #f3f4f6 !important;
+  color: #9ca3af !important;
+}
+
+.navigation {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  color: #3b82f6;
+  transition: all 0.2s ease;
+}
+
+.navigation:hover {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.monthLabel {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 1rem;
+}
+
+.weekDay {
+  color: #6b7280;
+  font-weight: 500;
+  font-size: 0.875rem;
+}

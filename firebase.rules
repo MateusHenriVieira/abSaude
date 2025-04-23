@@ -1,0 +1,36 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /clinics/{clinicId}/appointmentSlots/{slotId} {
+      allow create: if isValidBooking();
+      allow update: if isValidBookingUpdate();
+      allow delete: if resource.data.userId == request.auth.uid;
+      
+      function isValidBooking() {
+        let slot = request.resource.data;
+        let conflictingSlots = getConflictingSlots(slot);
+        return 
+          request.auth != null &&
+          slot.userId == request.auth.uid &&
+          slot.time is string &&
+          slot.date is timestamp &&
+          conflictingSlots == 0;
+      }
+      
+      function isValidBookingUpdate() {
+        let slot = request.resource.data;
+        return 
+          resource.data.userId == request.auth.uid &&
+          (slot.status == 'booked' || slot.status == 'canceled');
+      }
+      
+      function getConflictingSlots(slot) {
+        return getAfter(/databases/$(database)/documents/clinics/$(clinicId)/appointmentSlots)
+          .where('date', '==', slot.date)
+          .where('time', '==', slot.time)
+          .where('type', '==', slot.type)
+          .count();
+      }
+    }
+  }
+}
