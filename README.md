@@ -74,6 +74,6 @@ Saúde na Mão é um sistema completo de gestão de saúde desenvolvido para fac
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/saude-na-mao.git
+   git clone https://github.com/MateusHenriVieira/abSaude.git
    cd saude-na-mao
 
